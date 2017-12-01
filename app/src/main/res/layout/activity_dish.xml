@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.fabiogomez.carta.activities.DishActivity">
+
+
+    <ImageView
+        android:id="@+id/dish_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dish_price"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:contentDescription="@string/dish_image_description"
+        android:src="@drawable/f00_burguer"
+        app:layout_constraintBottom_toTopOf="@+id/dish_customization"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dish_price"
+        app:layout_constraintTop_toBottomOf="@+id/dish_price" />
+
+    <TextView
+        android:id="@+id/dish_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nombre del plato" />
+
+    <TextView
+        android:id="@+id/dish_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dish_name"
+        android:layout_alignStart="@+id/dish_name"
+        android:layout_below="@+id/dish_name"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dish_name"
+        app:layout_constraintTop_toBottomOf="@+id/dish_name"
+        tools:text="Descripción del plato" />
+
+    <TextView
+        android:id="@+id/dish_price"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_alignLeft="@+id/dish_description"
+        android:layout_alignStart="@+id/dish_description"
+        android:layout_below="@+id/dish_description"
+        android:layout_marginTop="@dimen/default_margin"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/dish_description"
+        app:layout_constraintTop_toBottomOf="@+id/dish_description"
+        tools:text="Precio del plato" />
+
+    <EditText
+        android:id="@+id/dish_customization"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dish_image"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        android:hint="@string/dish_hint"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/cancel_dish_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cancel_dish_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dish_customization"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/dish_customization"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        android:text="@string/cancel_dish_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_dish_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/add_dish_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cancel_dish_button"
+        android:layout_alignBottom="@+id/cancel_dish_button"
+        android:layout_alignEnd="@+id/dish_customization"
+        android:layout_alignRight="@+id/dish_customization"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:text="@string/add_dish_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cancel_dish_button" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="238dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/dish_price"
+        app:layout_constraintTop_toBottomOf="@+id/dish_description"
+        android:layout_marginRight="@dimen/default_margin">
+
+        <ImageView
+            android:id="@+id/a00_alergeno_altramuces"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@drawable/a00_alergeno_altramuces"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a01_alergeno_apio"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a00_alergeno_altramuces"
+            app:srcCompat="@drawable/a01_alergeno_apio"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a02_alergeno_azufre"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a01_alergeno_apio"
+            app:srcCompat="@drawable/a02_alergeno_azufre"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a03_alergeno_cacahuete"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a02_alergeno_azufre"
+            app:srcCompat="@drawable/a03_alergeno_cacahuete"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a04_alergeno_crustaceo"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a03_alergeno_cacahuete"
+            app:srcCompat="@drawable/a04_alergeno_crustaceo"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a05_alergeno_frutos"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a04_alergeno_crustaceo"
+            app:srcCompat="@drawable/a05_alergeno_frutos"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a06_alergeno_gluten"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a05_alergeno_frutos"
+            app:srcCompat="@drawable/a06_alergeno_gluten"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a07_alergeno_huevos"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a06_alergeno_gluten"
+            app:srcCompat="@drawable/a07_alergeno_huevos"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a08_alergeno_lacteo"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a07_alergeno_huevos"
+            app:srcCompat="@drawable/a08_alergeno_lacteo"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a09_alergeno_molusco"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a08_alergeno_lacteo"
+            app:srcCompat="@drawable/a09_alergeno_molusco"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a10_alergeno_mostaza"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a09_alergeno_molusco"
+            app:srcCompat="@drawable/a10_alergeno_mostaza"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a11_alergeno_pescado"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a10_alergeno_mostaza"
+            app:srcCompat="@drawable/a11_alergeno_pescado"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a12_alergeno_sesamo"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a11_alergeno_pescado"
+            app:srcCompat="@drawable/a12_alergeno_sesamo"
+            android:contentDescription="@string/allergen_image"/>
+
+        <ImageView
+            android:id="@+id/a13_alergeno_soja"
+            android:layout_width="@dimen/allergen_size"
+            android:layout_height="@dimen/allergen_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a12_alergeno_sesamo"
+            app:srcCompat="@drawable/a13_alergeno_soja"
+            android:contentDescription="@string/allergen_image"/>
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

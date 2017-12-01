@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Jander</string>
+    <string name="greeting">Carta de las narices</string>
+    <string name="offline_description">Image that represents the dish when there is no internet connection</string>
+    <string name="cancel_dish_button_text">Cancel</string>
+    <string name="add_dish_button_text">Add Dish</string>
+    <string name="dish_image_description">Imagen del plato</string>
+    <string name="dish_hint">Pedido a gusto del cliente</string>
+    <string name="dish_price">%.2f €</string>
+    <string name="pay_button_text">Check out</string>
+    <string name="allergen_image">Allergen Image</string>
+    <string name="check">Pay Check</string>
+</resources>
