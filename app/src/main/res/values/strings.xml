@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jander</string>
+    <string name="app_name">Jandr Klandr</string>
     <string name="greeting">Carta de las narices</string>
     <string name="offline_description">Image that represents the dish when there is no internet connection</string>
     <string name="cancel_dish_button_text">Cancel</string>
@@ -10,4 +10,5 @@
     <string name="pay_button_text">Check out</string>
     <string name="allergen_image">Allergen Image</string>
     <string name="check">Pay Check</string>
+    <string name="cancel_pay_button_text">Cancel</string>
 </resources>
