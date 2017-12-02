@@ -10,16 +10,35 @@ import android.widget.TextView
 import es.fabiogomez.carta.R
 import es.fabiogomez.carta.activities.CheckActivity
 import es.fabiogomez.carta.models.Dish
+import es.fabiogomez.carta.models.Table
 
 
 class DishFragment : Fragment() {
 
     companion object {
         val REQUEST_CHECKOUT = 1
+        private val ARG_TABLE = "ARG_TABLE"
+
+        fun newInstance(table: Table) : DishFragment {
+            val fragment = DishFragment()
+            val arguments = Bundle()
+
+            arguments.putSerializable(ARG_TABLE, table)
+            fragment.arguments = arguments
+
+            return fragment
+        }
     }
 
     lateinit var root : View
 
+    var table: Table? = null
+        set(value){
+            if (value != null) {
+                root.findViewById<TextView>(R.id.table).setText(value?.name)
+                dish = value?.dish
+            }
+        }
     var dish: Dish? = null
         set(value){
             val dishName = root.findViewById<TextView>(R.id.dish_name)
@@ -46,12 +65,9 @@ class DishFragment : Fragment() {
 
         if (inflater != null) {
             root = inflater.inflate(R.layout.fragment_dish, container, false)
-            dish = Dish("Hamburguesa \"Pecadorl\" Gourmet BLACK ANGUS",
-                    R.drawable.f00_burguer,
-                    10.50f,
-                    "Lacteos, Sesamo",
-                    "300 Gr de carne Angus, servida con patatas gratinadas al horno con queso",
-                    "")
+            if (arguments != null) {
+                table = arguments.getSerializable(ARG_TABLE) as? Table
+            }
         }
 
         return root

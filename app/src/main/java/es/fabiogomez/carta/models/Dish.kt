@@ -9,4 +9,4 @@ data class Dish (
         var price: Float,
         var allergens: String, // TODO - Esto deberá ser un array de alérgenos, hay que cambiarlo
         var description: String,
-        var customerCustomization: String?) : Serializable // Ya se que la voy a usar un fragment así que es necesario Serializable.
+        var customerCustomization: String?) : Serializable
