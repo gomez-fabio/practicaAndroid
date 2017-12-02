@@ -5,4 +5,6 @@ import java.io.Serializable
 data class Table(
     var name: String,
     var dish: Dish) : Serializable {
+
+    override fun toString() = name
 }

@@ -3,12 +3,23 @@ package es.fabiogomez.carta.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import es.fabiogomez.carta.R
+import es.fabiogomez.carta.fragments.TableListFragment
+import es.fabiogomez.carta.models.Table
+import es.fabiogomez.carta.models.Tables
 
-class DishActivity : AppCompatActivity(){
+class DishActivity : AppCompatActivity(), TableListFragment.OnTableSelectedListener {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dish)
+
+        if (fragmentManager.findFragmentById(R.id.table_list_fragment) == null ){
+            val fragment = TableListFragment.newInstance(Tables())
+            fragmentManager.beginTransaction()
+                    .add(R.id.table_list_fragment, fragment)
+                    .commit()
+        }
 
 
 //        findViewById<View>(R.id.cancel_dish_button).setOnClickListener { cancelDish() }
@@ -17,7 +28,9 @@ class DishActivity : AppCompatActivity(){
 //        findViewById<View>(R.id.add_dish_button).setOnClickListener { addDish() }
     }
 
-
+    override fun onTableSelected(table: Table?, position: Int) {
+        startActivity(TablePagerActivity.intent(this, position))
+    }
 
 
 //    private fun cancelDish() {

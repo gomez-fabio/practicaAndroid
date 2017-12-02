@@ -11,4 +11,9 @@
     <string name="allergen_image">Allergen Image</string>
     <string name="check">Pay Check</string>
     <string name="cancel_pay_button_text">Cancel</string>
+    <string name="previous">previous</string>
+    <string name="next">next</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
