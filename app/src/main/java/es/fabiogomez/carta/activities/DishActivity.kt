@@ -2,8 +2,10 @@ package es.fabiogomez.carta.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import es.fabiogomez.carta.R
 import es.fabiogomez.carta.fragments.TableListFragment
+import es.fabiogomez.carta.fragments.TablePagerFragment
 import es.fabiogomez.carta.models.Table
 import es.fabiogomez.carta.models.Tables
 
@@ -14,13 +16,24 @@ class DishActivity : AppCompatActivity(), TableListFragment.OnTableSelectedListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dish)
 
-        if (fragmentManager.findFragmentById(R.id.table_list_fragment) == null ){
-            val fragment = TableListFragment.newInstance()
-            fragmentManager.beginTransaction()
-                    .add(R.id.table_list_fragment, fragment)
-                    .commit()
+
+        if (findViewById<View>(R.id.table_list_fragment) != null) {
+            if (fragmentManager.findFragmentById(R.id.table_list_fragment) == null) {
+                val fragment = TableListFragment.newInstance()
+                fragmentManager.beginTransaction()
+                        .add(R.id.table_list_fragment, fragment)
+                        .commit()
+            }
         }
 
+        if (findViewById<View>(R.id.fragment_table_pager) != null) {
+            if (fragmentManager.findFragmentById(R.id.fragment_table_pager) == null) {
+                val fragment = TablePagerFragment.newInstance(0)
+                fragmentManager.beginTransaction()
+                        .add(R.id.fragment_table_pager, fragment)
+                        .commit()
+            }
+        }
 
 //        findViewById<View>(R.id.cancel_dish_button).setOnClickListener { cancelDish() }
 //

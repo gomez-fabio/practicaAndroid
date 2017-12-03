@@ -40,7 +40,7 @@ object Tables : Serializable {
             )
     )
 
-    val count: Int
+    val count
         get() = tables.size
 
     operator fun get(i: Int) = tables[i]
