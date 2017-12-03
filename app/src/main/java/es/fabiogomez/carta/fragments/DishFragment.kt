@@ -1,6 +1,7 @@
 package es.fabiogomez.carta.fragments
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
@@ -68,6 +69,7 @@ class DishFragment : Fragment() {
                 dishDescription.text = value.description
                 dishImage.setImageResource(value.image)
                 viewSwitcher.displayedChild = VIEW_INDEX.DISH.index
+                table?.dish = value
             } else {
                 updateDish()
             }
@@ -131,10 +133,25 @@ class DishFragment : Fragment() {
             val newDish: Deferred<Dish?> = bg {
                 downloadDish(table)
             }
-            dish = newDish.await()
+
+            val downloadedDish = newDish.await()
+
+            if (downloadedDish != null) {
+                dish = downloadedDish
+            } else {
+                AlertDialog.Builder(activity)
+                        .setTitle("Error")
+                        .setMessage("Error downloading data")
+                        .setPositiveButton("Retry", { dialog, _ ->
+                            dialog.dismiss()
+                            updateDish() })
+                        .setNegativeButton("Exit",  { dialog, _ ->  activity.finish() })
+                        .show()
+            }
+
         }
     }
-
+ 
     // TODO el argumento de entrada lo quito? Hm.
     fun downloadDish (table: Table?) : Dish? {
         try {
