@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ViewSwitcher
 import es.fabiogomez.carta.JSON_URL
 import es.fabiogomez.carta.R
 import es.fabiogomez.carta.activities.CheckActivity
@@ -22,6 +23,11 @@ import java.util.*
 
 
 class DishFragment : Fragment() {
+
+    enum class VIEW_INDEX (val index: Int) {
+        LOADING(0),
+        DISH(1)
+    }
 
     companion object {
         val REQUEST_CHECKOUT = 1
@@ -39,6 +45,7 @@ class DishFragment : Fragment() {
     }
 
     lateinit var root : View
+    lateinit var viewSwitcher : ViewSwitcher
 
     var table: Table? = null
         set(value){
@@ -60,12 +67,66 @@ class DishFragment : Fragment() {
                 dishPrice.text = getString(R.string.dish_price, value.price)
                 dishDescription.text = value.description
                 dishImage.setImageResource(value.image)
+                viewSwitcher.displayedChild = VIEW_INDEX.DISH.index
             } else {
                 updateDish()
             }
         }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        super.onCreateView(inflater, container, savedInstanceState)
+
+        if (inflater != null) {
+            root = inflater.inflate(R.layout.fragment_dish, container, false)
+
+            viewSwitcher = root.findViewById(R.id.view_switcher)
+            viewSwitcher.setInAnimation(activity, android.R.anim.fade_in)
+            viewSwitcher.setOutAnimation(activity, android.R.anim.fade_out)
+
+            if (arguments != null) {
+                table = arguments.getSerializable(ARG_TABLE) as? Table
+            }
+        }
+
+        return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.check,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.menu_pay_check) {
+            val intent = CheckActivity.intent(activity) // Llamo al método factoria de CheckActivity
+            startActivityForResult(intent, REQUEST_CHECKOUT)
+            startActivity(intent)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CHECKOUT){
+            if (resultCode == Activity.RESULT_OK) {
+                // Ckeckout, tendremos que limpiar la mesa
+            } else {
+                // Cancel Ckeckout, no hacemos nada
+            }
+        }
+    }
+
     private fun updateDish() {
+        viewSwitcher.displayedChild = VIEW_INDEX.LOADING.index
+
         async(UI) {
             val newDish: Deferred<Dish?> = bg {
                 downloadDish(table)
@@ -121,52 +182,5 @@ class DishFragment : Fragment() {
         }
 
         return null
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setHasOptionsMenu(true)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-
-        if (inflater != null) {
-            root = inflater.inflate(R.layout.fragment_dish, container, false)
-            if (arguments != null) {
-                table = arguments.getSerializable(ARG_TABLE) as? Table
-            }
-        }
-
-        return root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.check,menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId == R.id.menu_pay_check) {
-            val intent = CheckActivity.intent(activity) // Llamo al método factoria de CheckActivity
-            startActivityForResult(intent, REQUEST_CHECKOUT)
-            startActivity(intent)
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == REQUEST_CHECKOUT){
-            if (resultCode == Activity.RESULT_OK) {
-                // Ckeckout, tendremos que limpiar la mesa
-            } else {
-                // Cancel Ckeckout, no hacemos nada
-            }
-        }
     }
 }
