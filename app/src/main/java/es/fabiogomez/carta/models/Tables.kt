@@ -4,7 +4,7 @@ import es.fabiogomez.carta.R
 import java.io.Serializable
 
 
-class Tables : Serializable {
+object Tables : Serializable {
     private var tables: List<Table> = listOf(
             Table("Table 1",
                     Dish("Hamburguesa \"Pecadorl\" Gourmet BLACK ANGUS",

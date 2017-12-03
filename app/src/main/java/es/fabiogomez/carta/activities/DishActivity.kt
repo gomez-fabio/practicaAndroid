@@ -15,7 +15,7 @@ class DishActivity : AppCompatActivity(), TableListFragment.OnTableSelectedListe
         setContentView(R.layout.activity_dish)
 
         if (fragmentManager.findFragmentById(R.id.table_list_fragment) == null ){
-            val fragment = TableListFragment.newInstance(Tables())
+            val fragment = TableListFragment.newInstance()
             fragmentManager.beginTransaction()
                     .add(R.id.table_list_fragment, fragment)
                     .commit()

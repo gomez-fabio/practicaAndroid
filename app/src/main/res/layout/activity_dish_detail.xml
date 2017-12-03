@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--TODO PARA AÑADIR EL PLATO A LA MESA-->
 
     <ImageView
         android:id="@+id/dish_image"
@@ -18,7 +19,7 @@
         android:layout_marginRight="@dimen/default_margin"
         android:layout_marginTop="@dimen/default_margin"
         android:contentDescription="@string/dish_image_description"
-        android:src="@drawable/f00_burguer"
+        android:src="@drawable/default_image"
         app:layout_constraintBottom_toTopOf="@+id/dish_customization"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/dish_price"
