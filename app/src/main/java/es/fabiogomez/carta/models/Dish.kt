@@ -5,8 +5,21 @@ import java.io.Serializable
 
 data class Dish (
         var name: String,
-        var image: Int, // En el json viene un entero, luego busco en local esa referencia
+        var image: Int,
         var price: Float,
-        var allergens: String, // TODO - Esto deberá ser un array de alérgenos, hay que cambiarlo
         var description: String,
-        var customerCustomization: String?) : Serializable
+        var customerCustomization: String?,
+        val alergeno_altramuces : Int,
+        val alergeno_apio : Int,
+        val alergeno_azufre : Int,
+        val alergeno_cacahuete : Int,
+        val alergeno_crustaceo : Int,
+        val alergeno_frutos : Int,
+        val alergeno_gluten : Int,
+        val alergeno_huevos : Int,
+        val alergeno_lacteo : Int,
+        val alergeno_molusco : Int,
+        val alergeno_mostaza : Int,
+        val alergeno_pescado : Int,
+        val alergeno_sesamo : Int,
+        val alergeno_soja : Int) : Serializable

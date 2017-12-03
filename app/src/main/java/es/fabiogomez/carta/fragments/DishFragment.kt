@@ -7,10 +7,18 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import es.fabiogomez.carta.JSON_URL
 import es.fabiogomez.carta.R
 import es.fabiogomez.carta.activities.CheckActivity
 import es.fabiogomez.carta.models.Dish
 import es.fabiogomez.carta.models.Table
+import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
+import org.jetbrains.anko.coroutines.experimental.bg
+import org.json.JSONObject
+import java.net.URL
+import java.util.*
 
 
 class DishFragment : Fragment() {
@@ -34,6 +42,7 @@ class DishFragment : Fragment() {
 
     var table: Table? = null
         set(value){
+            field = value
             if (value != null) {
                 root.findViewById<TextView>(R.id.table).setText(value?.name)
                 dish = value?.dish
@@ -51,8 +60,69 @@ class DishFragment : Fragment() {
                 dishPrice.text = getString(R.string.dish_price, value.price)
                 dishDescription.text = value.description
                 dishImage.setImageResource(value.image)
+            } else {
+                updateDish()
             }
         }
+
+    private fun updateDish() {
+        async(UI) {
+            val newDish: Deferred<Dish?> = bg {
+                downloadDish(table)
+            }
+            dish = newDish.await()
+        }
+    }
+
+    // TODO el argumento de entrada lo quito? Hm.
+    fun downloadDish (table: Table?) : Dish? {
+        try {
+            val url = URL(JSON_URL)
+            val jsonString = Scanner(url.openStream(), "UTF-8").useDelimiter("\\A").next()
+            val jsonRoot = JSONObject(jsonString)
+            val list = jsonRoot.getJSONArray("dishes")
+            val fromJson = list.getJSONObject(0)
+
+            val name = fromJson.getString("name")
+            val image = fromJson.getInt("image")
+            val price = fromJson.getDouble("price").toFloat()
+            val description = fromJson.getString("description")
+            val customerCustomization = fromJson.getString("customerCustomization")
+            val alergeno_altramuces = fromJson.getInt("alergeno_altramuces")
+            val alergeno_apio = fromJson.getInt("alergeno_apio")
+            val alergeno_azufre = fromJson.getInt("alergeno_azufre")
+            val alergeno_cacahuete = fromJson.getInt("alergeno_cacahuete")
+            val alergeno_crustaceo = fromJson.getInt("alergeno_crustaceo")
+            val alergeno_frutos = fromJson.getInt("alergeno_frutos")
+            val alergeno_gluten = fromJson.getInt("alergeno_gluten")
+            val alergeno_huevos = fromJson.getInt("alergeno_huevos")
+            val alergeno_lacteo = fromJson.getInt("alergeno_lacteo")
+            val alergeno_molusco = fromJson.getInt("alergeno_molusco")
+            val alergeno_mostaza = fromJson.getInt("alergeno_mostaza")
+            val alergeno_pescado = fromJson.getInt("alergeno_pescado")
+            val alergeno_sesamo = fromJson.getInt("alergeno_sesamo")
+            val alergeno_soja = fromJson.getInt("alergeno_soja")
+            val iconResource = when (image) {
+                0 -> R.drawable.f00_burguer
+                1 -> R.drawable.f01_pizza
+                2 -> R.drawable.f02_nachos
+                3 -> R.drawable.f03_beer
+                else -> R.drawable.f03_beer
+            }
+
+            return Dish( name, iconResource, price, description, customerCustomization,
+                    alergeno_altramuces, alergeno_apio, alergeno_azufre, alergeno_cacahuete,
+                    alergeno_crustaceo, alergeno_frutos, alergeno_gluten, alergeno_huevos,
+                    alergeno_lacteo, alergeno_molusco, alergeno_mostaza, alergeno_pescado,
+                    alergeno_sesamo, alergeno_soja )
+
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+
+        return null
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
