@@ -1,19 +1,31 @@
 <resources>
-    <string name="app_name">Jandr Klandr</string>
-    <string name="greeting">Carta de las narices</string>
-    <string name="offline_description">Image that represents the dish when there is no internet connection</string>
-    <string name="cancel_dish_button_text">Cancel</string>
-    <string name="add_dish_button_text">Add Dish</string>
-    <string name="dish_image_description">Imagen del plato</string>
-    <string name="dish_hint">Pedido a gusto del cliente</string>
-    <string name="dish_price">%.2f €</string>
-    <string name="pay_button_text">Check out</string>
-    <string name="allergen_image">Allergen Image</string>
-    <string name="check">Pay Check</string>
-    <string name="cancel_pay_button_text">Cancel</string>
-    <string name="previous">previous</string>
-    <string name="next">next</string>
+    <string name="app_name">Restaurante</string>
+    <string name="title_activity_main">MainActivity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cerveza">Cerveza Weihenstephan Vitus</string>
+    <string name="icons_allergens">icons_allergens</string>
+    <string name="plate_image">plate_image</string>
+    <string name="default_plate_image">deafault_plate_image</string>
+    <string name="mocked">Ten cuidadínnn no te hagas pupita en el fistro duodenalll</string>
+    <string name="mockup_price">28,5 Euros</string>
+    <string name="notas_title">Notas</string>
+    <string name="add_btn">Añadir</string>
+    <string name="cancel_btn">Cancelar</string>
+    <string name="selec_table">Seleccione una mesa</string>
+    <string name="table">Mesa</string>
+    <string name="selec_plate">Seleccione un plato</string>+
+    <string name="total">El total es: %s euros</string>
+    <string name="total_empty">No hay nada que pagar</string>
+    <string name="plate_detail">Detalle del Plato</string>
+    <string name="add">Añadir</string>
+    <string name="cancel">Cancelar</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
+    <string name="deleted">Plato eliminado</string>
+    <string name="added">Plato añadido</string>
+    <string name="edited">Plato editado</string>
+    <string name="notas_hint">notas</string>
+    <string name="anotaciones">Anotaciones</string>
+    <string name="pagar">Pagar</string>
+
 </resources>
