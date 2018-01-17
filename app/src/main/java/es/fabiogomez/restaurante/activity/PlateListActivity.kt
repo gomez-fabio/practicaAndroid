@@ -34,7 +34,6 @@ class PlateListActivity : AppCompatActivity(), PlatesRecyclerViewAdapter.OnPlate
         }
 
         addButton.setOnClickListener{
-            /// Llamar  Al CloudListActivity (igual que PlateListActivity) pasandole la table position
             startActivity(CloudPlateListActivity.intent(this,tableIndex))
         }
     }
