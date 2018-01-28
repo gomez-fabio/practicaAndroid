@@ -52,11 +52,13 @@ class TablePlateListActivity : AppCompatActivity(), TablesListFragment.OnTableSe
 
 
         if (tablet) {
-            val fragment = PlatesListFragment.newInstance()
-            fragment.list = Tables[0].platos
-            fragmentManager.beginTransaction()
-                    .replace(R.id.plate_list_content, fragment)
-                    .commit()
+            if (tableIndex != -1) {
+                val fragment = PlatesListFragment.newInstance()
+                fragment.list = Tables[tableIndex].platos
+                fragmentManager.beginTransaction()
+                        .replace(R.id.plate_list_content, fragment)
+                        .commit()
+            }
         }
     }
 
@@ -113,6 +115,14 @@ class TablePlateListActivity : AppCompatActivity(), TablesListFragment.OnTableSe
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == R.id.menu && tableIndex != -1) {
             pay()
+        } else {
+            AlertDialog.Builder(this)
+                    .setTitle("Fistro")
+                    .setMessage("Selecciona la mesa que va a pagar...")
+                    .setPositiveButton("OK", { dialog, which ->
+                        dialog.dismiss()
+                    })
+                    .show()
         }
 
         return super.onOptionsItemSelected(item)
