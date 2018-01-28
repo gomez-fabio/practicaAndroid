@@ -24,3 +24,12 @@
 ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-plate-detail.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-plate-detail.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-plate-list-with-plate.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-plate-list-with-plate.png)
 
 ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-pay.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-pay.png)
+
+### Phone screenshots
+![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-download.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-download.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-list.png) 
+
+![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-plate-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-plate-list.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-cloud-plates-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-cloud-plates-list.png)
+
+![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-plate-detail.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-plate-detail.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-plate-list-with-plate.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-plate-list-with-plate.png)
+
+![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-pay.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-pay.png)
