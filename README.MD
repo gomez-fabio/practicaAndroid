@@ -25,7 +25,7 @@
 
 ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-pay.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-pay.png)
 
-### Phone screenshots
+### Tablet screenshots
 ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-download.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-download.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-list.png) 
 
 ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-plate-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-table-plate-list.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-cloud-plates-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/tablet-cloud-plates-list.png)
