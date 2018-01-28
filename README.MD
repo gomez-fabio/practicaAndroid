@@ -15,3 +15,12 @@
 - Uso la libreria anko [https://github.com/Kotlin/anko/wiki/Anko-Coroutines](https://github.com/Kotlin/anko/wiki/Anko-Coroutines) para descargar asíncronamente la lista de platos desde Mocky al iniciar la aplicación.
 - Uso un interactor para el caso de uso de la descarga de platos del servicio Mocky.
 - Distingue entre modo teléfono y tablet.
+
+### Phone screenshots
+![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-download.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-download.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-list.png) 
+
+![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-plate-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-plate-list.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-cloud-plates-list.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-cloud-plates-list.png)
+
+![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-plate-detail.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-plate-detail.png) ![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-plate-list-with-plate.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-plate-list-with-plate.png)
+
+![https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-pay.png](https://raw.githubusercontent.com/gomez-fabio/practicaAndroid/master/pics/phone-table-pay.png)
