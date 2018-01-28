@@ -40,11 +40,14 @@ class DetailPlateActivity : AppCompatActivity() {
         plateIndex = intent.getIntExtra(EXTRA_PLATE_POSITION, -1)
         mode = intent.getIntExtra(EXTRA_DETAIL_MODE, -1)
 
-        if (findViewById<View>(R.id.content) != null) {
+        if (findViewById<View>(R.id.detail_plate_content) != null) {
             val fragment = PlateDetailFragment.newInstance(tableIndex, plateIndex, mode)
-            title =  "Editando platos de la mesa"+" ${tableIndex}"
+            when (mode) {
+                0 -> title =  "Añadiendo plato a la mesa"+" ${tableIndex}"
+                1 -> title =  "Editando plato de la mesa"+" ${tableIndex}"
+            }
             fragmentManager.beginTransaction()
-                    .replace(R.id.content, fragment)
+                    .replace(R.id.detail_plate_content, fragment)
                     .commit()
 
         }

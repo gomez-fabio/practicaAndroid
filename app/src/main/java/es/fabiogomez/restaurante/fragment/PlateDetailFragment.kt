@@ -13,6 +13,11 @@ import es.fabiogomez.restaurante.model.CloudPlates
 import es.fabiogomez.restaurante.model.Plate
 import es.fabiogomez.restaurante.model.Tables
 import com.squareup.picasso.Picasso
+import android.R.drawable.edit_text
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.view.inputmethod.InputMethodManager
+
 
 class PlateDetailFragment : Fragment() {
     companion object {
@@ -106,4 +111,5 @@ class PlateDetailFragment : Fragment() {
         }
         activity.finish()
     }
+
 }

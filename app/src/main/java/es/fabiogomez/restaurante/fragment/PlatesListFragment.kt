@@ -39,7 +39,7 @@ class PlatesListFragment : Fragment() {
                 list =savedInstanceState.getSerializable(LIST) as ArrayList<Plate>
 
             root = inflater.inflate(R.layout.fragment_plates_list,container,false)
-            plateListRecyclerView = root.findViewById(R.id.menu_list)
+            plateListRecyclerView = root.findViewById(R.id.menu_list_content)
             plateListRecyclerView.layoutManager = LinearLayoutManager(activity)
             plateListRecyclerView.itemAnimator = DefaultItemAnimator()
             // Adapter

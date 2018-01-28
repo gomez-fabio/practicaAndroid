@@ -43,7 +43,7 @@ class TablesListFragment : Fragment() {
             viewSwitcher.setInAnimation(activity, android.R.anim.fade_in)
             viewSwitcher.setOutAnimation(activity, android.R.anim.fade_out)
             getPlateList()
-            list = root.findViewById<ListView>(R.id.table_list)
+            list = root.findViewById<ListView>(R.id.table_list_content)
             val adapter = ArrayAdapter<Table>(activity, android.R.layout.simple_list_item_1, Tables.tables)
             list.adapter = adapter
 

@@ -35,12 +35,12 @@ class CloudPlateListActivity : AppCompatActivity(), PlatesRecyclerViewAdapter.On
         tableIndex = intent.getIntExtra(EXTRA_TABLE_POSITION, 0)
 
 
-        if (findViewById<View>(R.id.plate_list) != null) {
+        if (findViewById<View>(R.id.cloud_plate_list_content) != null) {
             val fragment = PlatesListFragment.newInstance()
             fragment.list = CloudPlates.plates
             title =  "Añadiendo platos a la mesa"+" ${tableIndex}"
             fragmentManager.beginTransaction()
-                    .replace(R.id.plate_list, fragment)
+                    .replace(R.id.cloud_plate_list_content, fragment)
                     .commit()
 
         }
@@ -57,7 +57,7 @@ class CloudPlateListActivity : AppCompatActivity(), PlatesRecyclerViewAdapter.On
         startActivity(DetailPlateActivity.intent(this, tableIndex, position, 0))
 
 
-        //finish()
+        finish()
     }
 
     private fun addPlate(plate: Plate?) {

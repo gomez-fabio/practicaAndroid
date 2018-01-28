@@ -10,6 +10,10 @@ import es.fabiogomez.restaurante.fragment.PlatesListFragment
 import es.fabiogomez.restaurante.fragment.TablesListFragment
 import es.fabiogomez.restaurante.model.Table
 import es.fabiogomez.restaurante.model.Tables
+import android.support.design.widget.FloatingActionButton
+import android.support.v7.app.AlertDialog
+import android.view.Menu
+import android.view.MenuItem
 
 class TablePlateListActivity : AppCompatActivity(), TablesListFragment.OnTableSelectedListener {
     private val TABLE_LIST_TAG = "TableList"
@@ -25,16 +29,15 @@ class TablePlateListActivity : AppCompatActivity(), TablesListFragment.OnTableSe
         }
     }
     var tablet = false
+    var tableIndex = -1
+
+    val addButton: FloatingActionButton by lazy { findViewById<FloatingActionButton>(R.id.add_plate_button) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_table_plate_list)
 
-        if (findViewById<View>(R.id.plate_list_content) != null) {
-            tablet = true
-        } else {
-            tablet = false
-        }
+        tablet = findViewById<View>(R.id.plate_list_content) != null
 
 
         if (findViewById<View>(R.id.main_content) != null) {
@@ -57,8 +60,88 @@ class TablePlateListActivity : AppCompatActivity(), TablesListFragment.OnTableSe
         }
     }
 
-    override fun onTableSelected(table: Table?, position: Int) {
-        //Voy a la segunda vista
-        startActivity(intent(this, position))
+    override fun onResume() {
+        super.onResume()
+
+        if (tableIndex == -1) {
+            title = "Restaurante"
+        } else {
+            val total = Tables[tableIndex].calculateCount()
+            title =  "Mesa "+" ${tableIndex}" + " - Total: ${total} €"
+        }
+
     }
+
+    override fun onTableSelected(table: Table?, position: Int) {
+        if (!tablet) {
+            //Voy a la segunda vista
+            startActivity(intent(this, position))
+        }
+        else
+        {
+            val total = Tables[position].calculateCount()
+            title =  "Mesa "+" ${position}" + " - Total: ${total} €"
+            tableIndex = position
+
+            if (findViewById<View>(R.id.plate_list_content) != null) {
+                val fragment = PlatesListFragment.newInstance()
+
+                fragment.list = Tables[position].platos
+                fragmentManager.beginTransaction()
+                        .replace(R.id.plate_list_content, fragment)
+                        .commit()
+            }
+
+            addButton.setOnClickListener{
+                startActivity(CloudPlateListActivity.intent(this,position))
+            }
+        }
+    }
+
+
+    // Menu y pagar
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+
+        if (tablet) {
+            menuInflater.inflate(R.menu.menu, menu)
+        }
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.menu && tableIndex != -1) {
+            pay()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun pay() {
+        var message: String
+
+        val total = Tables[tableIndex].calculateCount()
+        message = resources.getString(R.string.total, total.toString())
+
+        when (total) {
+            0f -> message = resources.getString(R.string.total_empty)
+        }
+
+        AlertDialog.Builder(this)
+                .setTitle("Pagar la cuenta")
+                .setMessage(message)
+                .setPositiveButton("PAGAR", { dialog, which ->
+                    dialog.dismiss()
+                    Tables[tableIndex].platos.clear()
+                    finish()
+                    startActivity(intent)
+                })
+                .setNegativeButton("CANCELAR", { dialog, which ->
+                    dialog.dismiss()
+                })
+                .show()
+    }
+
+
 }

@@ -13,7 +13,7 @@
         android:indeterminate="true" />
 
     <ListView
-        android:id="@+id/table_list"
+        android:id="@+id/table_list_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>
